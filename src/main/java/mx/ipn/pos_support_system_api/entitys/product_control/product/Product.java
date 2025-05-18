@@ -11,22 +11,22 @@ public class Product {
   private double price;
   private String description;
   private int stock;
-  private int department_id;
-  private int type_id;
+  private String department;
+  private String type;
 
   public Product() {
 
   }
 
   public Product(String bar_code, String name, double price, String description,
-                 int stock, int department_id, int type_id) {
+                 int stock, String department, String type) {
     this.bar_code = bar_code;
     this.name = name;
     this.price = price;
     this.description = description;
     this.stock = stock;
-    this.department_id = department_id;
-    this.type_id = type_id;
+    this.department = department;
+    this.type = type;
   }
 
   public String getBar_code() {
@@ -69,19 +69,19 @@ public class Product {
     this.stock = stock;
   }
 
-  public int getDepartment_id() {
-    return department_id;
+  public String getDepartment() {
+    return department;
   }
 
-  public void setDepartment_id(int department_id) {
-    this.department_id = department_id;
+  public void setDepartment(String department) {
+    this.department = department;
   }
 
-  public int getType_id() {
-    return type_id;
+  public String getType() {
+    return type;
   }
 
-  public void setType_id(int type_id) {
-    this.type_id = type_id;
+  public void setType(String type) {
+    this.type = type;
   }
 }

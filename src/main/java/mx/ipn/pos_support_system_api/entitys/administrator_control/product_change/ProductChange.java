@@ -18,7 +18,6 @@ public class ProductChange {
   private String previous_description;
   private Integer previous_stock;
   private Date date;
-  private String user_id;
 
   public ProductChange() {
 
@@ -27,14 +26,13 @@ public class ProductChange {
   public ProductChange(String bar_code, String previous_name,
                        Double previous_price, String previous_description,
                        Integer previous_stock,
-                       Date date, String user_id) {
+                       Date date) {
     this.bar_code = bar_code;
     this.previous_name = previous_name;
     this.previous_price = previous_price;
     this.previous_description = previous_description;
     this.previous_stock = previous_stock;
     this.date = date;
-    this.user_id = user_id;
   }
 
   public Integer getId() {
@@ -91,13 +89,5 @@ public class ProductChange {
 
   public void setDate(Date date) {
     this.date = date;
-  }
-
-  public String getUser_id() {
-    return user_id;
-  }
-
-  public void setUser_id(String user_id) {
-    this.user_id = user_id;
   }
 }

@@ -80,7 +80,6 @@ public class ProductChangeController {
           newProductChange.getPrevious_description());
       product_change.setPrevious_stock(newProductChange.getPrevious_stock());
       product_change.setDate(newProductChange.getDate());
-      product_change.setUser_id(newProductChange.getUser_id());
 
       updateProductChange = repository.save(product_change);
     }

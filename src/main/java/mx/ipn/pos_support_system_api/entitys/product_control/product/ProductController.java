@@ -9,6 +9,7 @@ import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.IanaLinkRelations;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,7 +17,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import mx.ipn.pos_support_system_api.entitys
@@ -24,6 +24,7 @@ import mx.ipn.pos_support_system_api.entitys
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 
+@CrossOrigin(origins = "http://127.0.0.1:3000")
 @RestController
 @RequestMapping(path="/api")
 public class ProductController {
@@ -73,8 +74,7 @@ public class ProductController {
 
   @PutMapping("/products/{bar_code}")
   ResponseEntity<?> replaceProduct(@RequestBody Product newProduct,
-                                   @PathVariable String bar_code,
-                                   @RequestParam String user_id) {
+                                   @PathVariable String bar_code) {
     Optional<Product> product_optional = repository.findById(bar_code);
 
     Product updateProduct = null;
@@ -90,16 +90,15 @@ public class ProductController {
           product.getPrice(),
           product.getDescription(),
           product.getStock(),
-          new Date(System.currentTimeMillis()),
-          user_id);
+          new Date(System.currentTimeMillis()));
       productChangeRepository.save(productChange);
 
       product.setName(newProduct.getName());
       product.setPrice(newProduct.getPrice());
       product.setDescription(newProduct.getDescription());
       product.setStock(newProduct.getStock());
-      product.setDepartment_id(newProduct.getDepartment_id());
-      product.setType_id(newProduct.getType_id());
+      product.setDepartment(newProduct.getDepartment());
+      product.setType(newProduct.getType());
 
       updateProduct = repository.save(product);
     }
@@ -112,8 +111,7 @@ public class ProductController {
   }
 
   @DeleteMapping("/products/{bar_code}")
-  ResponseEntity<?> deleteProduct(@PathVariable String bar_code,
-                                  @RequestParam String user_id) {
+  ResponseEntity<?> deleteProduct(@PathVariable String bar_code) {
     Optional<Product> product_optional = repository.findById(bar_code);
 
     if (!product_optional.isEmpty()) {
@@ -125,8 +123,7 @@ public class ProductController {
           product.getPrice(),
           product.getDescription(),
           product.getStock(),
-          new Date(System.currentTimeMillis()),
-          user_id);
+          new Date(System.currentTimeMillis()));
           
       productChangeRepository.save(productChange);
     }
