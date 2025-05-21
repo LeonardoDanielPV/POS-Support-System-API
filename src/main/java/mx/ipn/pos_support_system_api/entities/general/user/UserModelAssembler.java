@@ -1,4 +1,4 @@
-package mx.ipn.pos_support_system_api.entitys.general.user;
+package mx.ipn.pos_support_system_api.entities.general.user;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 

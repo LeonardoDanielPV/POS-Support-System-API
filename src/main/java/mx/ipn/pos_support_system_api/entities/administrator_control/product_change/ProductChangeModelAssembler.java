@@ -1,4 +1,4 @@
-package mx.ipn.pos_support_system_api.entitys.administrator_control.product_change;
+package mx.ipn.pos_support_system_api.entities.administrator_control.product_change;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 

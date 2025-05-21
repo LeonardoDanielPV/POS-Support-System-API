@@ -1,4 +1,4 @@
-package mx.ipn.pos_support_system_api.entitys.product_control.product;
+package mx.ipn.pos_support_system_api.entities.product_control.product;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
